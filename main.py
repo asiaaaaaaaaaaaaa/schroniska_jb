@@ -62,7 +62,7 @@ if __name__== '__main__':
         if menu_option == '6':
             update_shelters(shelters)
         if menu_option == '7':
-            update_customers(customers)
+            update_customers(customers, shelters)
         if menu_option == '8':
             update_workers(workers)
         if menu_option == '9':

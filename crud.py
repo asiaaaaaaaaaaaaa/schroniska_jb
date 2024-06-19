@@ -25,11 +25,11 @@ def remove_shelters(shelter_list) -> None:
 def remove_customers(customer_list) -> None:
     kogo_szukasz = input('Kogo szukasz: ')
     for customer in customer_list:
-        if customer['name'] == kogo_szukasz == ['new_name'] :
+        if customer['name'] == kogo_szukasz :
             customer_list.remove(customer)
             print(f"Klient {kogo_szukasz} został usunięty.")
             return
-    print(f"Klient {kogo_szukasz} nie został znaleziony ")
+
 
 def remove_workers(worker_list) -> None:
     kogo_szukasz = input('Kogo szukasz: ')
@@ -38,7 +38,7 @@ def remove_workers(worker_list) -> None:
             worker_list.remove(worker)
             print(f"Pracownik {kogo_szukasz} został usunięty.")
             return
-    print(f"Pracownik {kogo_szukasz} nie został znaleziony.")
+
 
 def update_shelters(shelters_list) -> None:
     kogo_szukasz = input('Podaj nazwę schroniska do aktualizacji: ')
@@ -67,7 +67,7 @@ def update_shelters(shelters_list) -> None:
 
     print(f"Schronisko {kogo_szukasz} nie zostało znalezione.")
 
-def update_customers(customers_list) -> None:
+def update_customers(customers_list, shelter_list) -> None:
     kogo_szukasz = input('Podaj imię klienta do aktualizacji: ')
     for customer in customers_list:
         if customer['name'] == kogo_szukasz:
@@ -76,6 +76,11 @@ def update_customers(customers_list) -> None:
             new_location = input('Podaj nową miejscowość:')
             new_my_shelter = input('Podaj schronisko z którego korzystasz')
 
+            if new_my_shelter not in shelter_list:
+                print("Klient nie należy do istniejącego schroniska, usuń go")
+
+                remove_customers(customers_list)
+                return
 
             # Attempt to fetch coordinates for the new location
             coordinates = get_coordinates(new_location)
@@ -107,7 +112,12 @@ def update_workers(worker_list) -> None:
             new_location = input('Podaj nową miejscowość:')
             new_workplace = input('Podaj nowe miejsce pracy:')
 
-            # Attempt to fetch coordinates for the new location
+            if new_workplace not in worker_list:
+                print("Pracownik nie należy do istniejącego schroniska, usuń go")
+
+                remove_workers(worker_list)
+                return
+
             coordinates = get_coordinates(new_location)
             if coordinates:
                 new_latitude, new_longitude = coordinates
@@ -197,6 +207,12 @@ def add_new_worker(worker_list):
     new_surname = input("Nazwisko nowego pracownika:")
     new_location = input("Miejsce zamieszkania nowego pracownika: ")
     new_workplace = input("Podaj nowe miejsce pracy:")
+
+    if new_workplace not in worker_list:
+        print("Pracownik nie należy do istniejącego schroniska, usuń go")
+
+        remove_workers(worker_list)
+        return
 
     coordinates = get_coordinates(new_location)
 
