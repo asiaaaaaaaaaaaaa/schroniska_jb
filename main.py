@@ -64,13 +64,13 @@ if __name__== '__main__':
         if menu_option == '7':
             update_customers(customers, shelters)
         if menu_option == '8':
-            update_workers(workers)
+            update_workers(workers,shelters)
         if menu_option == '9':
             add_new_shelter(shelters)
         if menu_option == '10':
             add_new_customer(customers, shelters)
         if menu_option == '11':
-            add_new_worker(workers)
+            add_new_worker(workers, shelters)
         if menu_option == '12':
             map_single_shelter(shelters)
         if menu_option == '13':

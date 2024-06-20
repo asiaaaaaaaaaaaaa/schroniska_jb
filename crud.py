@@ -76,7 +76,7 @@ def update_customers(customers_list, shelter_list) -> None:
             new_location = input('Podaj nową miejscowość:')
             new_my_shelter = input('Podaj schronisko z którego korzystasz')
 
-            if new_my_shelter not in shelter_list:
+            if new_my_shelter not in [shelter['name'] for shelter in shelter_list]:
                 print("Klient nie należy do istniejącego schroniska, usuń go")
 
                 remove_customers(customers_list)
@@ -100,7 +100,7 @@ def update_customers(customers_list, shelter_list) -> None:
             return
     print(f"Klient {kogo_szukasz} nie został znalezione.")
 
-def update_workers(worker_list) -> None:
+def update_workers(worker_list, shelter_list) -> None:
     kogo_szukasz = input('Podaj imię pracownika do aktualizacji: ')
     for worker in worker_list:
         if worker['name'] == kogo_szukasz:
@@ -109,7 +109,7 @@ def update_workers(worker_list) -> None:
             new_location = input('Podaj nową miejscowość:')
             new_workplace = input('Podaj nowe miejsce pracy:')
 
-            if new_workplace not in worker_list:
+            if new_workplace not in [shelter['name'] for shelter in shelter_list]:
                 print("Pracownik nie należy do istniejącego schroniska, usuń go")
 
                 remove_workers(worker_list)
@@ -165,7 +165,7 @@ def add_new_customer(customer_list, shelter_list):
     new_location = input("Miejsce zamieszkania nowego klienta: ")
     new_my_shelter = input("Podaj schronisko, z którego korzysta nowy klient:")
 
-    if new_my_shelter not in shelter_list:
+    if new_my_shelter not in [shelter['name'] for shelter in shelter_list]:
         print("Klient nie należy do istniejącego schroniska, usuń go")
 
         remove_customers(customer_list)
@@ -194,13 +194,13 @@ def add_new_customer(customer_list, shelter_list):
     print(f"Nowy klient {new_name} zostało dodane.")
 
 
-def add_new_worker(worker_list):
+def add_new_worker(worker_list,shelter_list):
     new_name = input("Imię nowego pracownika: ")
     new_surname = input("Nazwisko nowego pracownika:")
     new_location = input("Miejsce zamieszkania nowego pracownika: ")
     new_workplace = input("Podaj nowe miejsce pracy:")
 
-    if new_workplace not in worker_list:
+    if new_workplace not in [shelter['name'] for shelter in shelter_list]:
         print("Pracownik nie należy do istniejącego schroniska, usuń go")
 
         remove_workers(worker_list)
@@ -407,7 +407,7 @@ def assign_customers_to_shelters(shelters_list, customers_list):
         customers = shelter_customer.get(shelter_name, [])
         if customers:
             for customer in customers:
-                print(f"- {customer['name']} {customer['surname']} (Pracuje w {customer['my_shelter']})")
+                print(f"- {customer['name']} {customer['surname']} (Korzysta ze schroniska {customer['my_shelter']})")
         else:
             print("Brak klientów w tym schronisku.")
         print()

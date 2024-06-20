@@ -6,7 +6,7 @@ shelters = [
     {"name": "schronisko Pets", "location": "Gdynia", 'latitude': 18.539, 'longitude': 54.519, 'shelter': "schronisko Pets"},
 ]
 
-customers: list[dict] = [
+customers = [
     {"name": "Joanna", "surname": "Buda", "location": "Warszawa", 'latitude': 21.008333, 'longitude': 52.232222, 'my_shelter': "schronisko Kocia Łapka"},
     {"name": "Katarzyna", "surname": "Puzoń", "location": "Lublin", 'latitude': 22.566667, 'longitude': 51.25, 'my_shelter': "schronisko Burek"},
     {"name": "Agnieszka", "surname": "Pasierbek", "location": "Kraków", 'latitude': 19.938, 'longitude': 50.061, 'my_shelter': "schronisko Ciapkowo"},
@@ -19,7 +19,7 @@ customers: list[dict] = [
     {"name": "Justyna", "surname": "Owocna", "location": "Gdynia", 'latitude': 18.539, 'longitude': 54.519, 'my_shelter': "schronisko Pets"},
 ]
 
-workers: list[dict] = [
+workers = [
     {"name": "Kuba", "surname": "Madej", "location": "Warszawa", 'latitude': 21.008333, 'longitude': 52.232222, 'work_place': "schronisko Kocia Łapka"},
     {"name": "Konrad", "surname": "Pawłowski", "location": "Lublin", 'latitude': 22.566667, 'longitude': 51.25, 'work_place': "schronisko Burek"},
     {"name": "Mikołaj", "surname": "Kubiczek", "location": "Kraków", 'latitude': 19.938, 'longitude': 50.061, 'work_place': "schronisko Ciapkowo"},
