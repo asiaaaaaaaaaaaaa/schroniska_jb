@@ -82,7 +82,6 @@ def update_customers(customers_list, shelter_list) -> None:
                 remove_customers(customers_list)
                 return
 
-            # Attempt to fetch coordinates for the new location
             coordinates = get_coordinates(new_location)
             if coordinates:
                 new_latitude, new_longitude = coordinates
@@ -90,8 +89,6 @@ def update_customers(customers_list, shelter_list) -> None:
                 new_latitude = float(input('Podaj nową szerokość geograficzną: '))
                 new_longitude = float(input('Podaj nową długość geograficzną: '))
 
-
-            # Aktualizacja danych klienta
             customer['name'] = new_name
             customer['surname'] = new_surname
             customer['location'] = new_location
@@ -143,18 +140,14 @@ def add_new_shelter(shelters_list):
     new_name = new_shelter = input("Nazwa nowego schroniska: ")
     new_location = input("Miejscowość nowego schroniska: ")
 
-
-    # Attempt to fetch coordinates for the new location
     coordinates = get_coordinates(new_location)
 
     if coordinates:
         new_latitude, new_longitude = coordinates
     else:
-        # If coordinates cannot be fetched, prompt user to input manually
         new_latitude = float(input("Szerokość geograficzna schroniska: "))
         new_longitude = float(input("Długość geograficzna schroniska: "))
 
-    # Create new shelter dictionary
     new_shelter = {
         "name": new_name,
         "location": new_location,
@@ -188,7 +181,6 @@ def add_new_customer(customer_list, shelter_list):
         new_latitude = float(input("Szerokość geograficzna klienta: "))
         new_longitude = float(input("Długość geograficzna klienta: "))
 
-    # Create new customer dictionary
     new_customer = {
         "name": new_name,
         "surname": new_surname,
@@ -223,7 +215,6 @@ def add_new_worker(worker_list):
         new_latitude = float(input("Szerokość geograficzna pracownika: "))
         new_longitude = float(input("Długość geograficzna pracownika: "))
 
-    # Create new worker dictionary
     new_worker = {
         "name": new_name,
         "surname": new_surname,
