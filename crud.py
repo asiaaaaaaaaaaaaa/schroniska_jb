@@ -381,6 +381,7 @@ def assign_workers_to_shelters(shelters_list, workers_list):
         if work_place in shelter_workers:
             shelter_workers[work_place].append(worker)
 
+
     for shelter in shelters_list:
         shelter_name = shelter['name']
         print(f"Pracownicy schroniska '{shelter_name}':")
